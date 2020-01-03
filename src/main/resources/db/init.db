@@ -1,0 +1,6 @@
+CREATE DATABASE IF NOT EXISTS `hj_board` COLLATE 'utf8_general_ci';
+
+CREATE USER 'hj_board'@'%' IDENTIFIED BY 'board22@@';
+
+GRANT ALL PRIVILEGES ON `hj_board`.* TO 'hj_board'@'%';
+FLUSH PRIVILEGES;
