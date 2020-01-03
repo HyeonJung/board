@@ -5,10 +5,8 @@ import com.hj.board.domain.user.model.base.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Getter
@@ -46,4 +44,10 @@ public class User extends BaseModel {
     @Column
     private boolean enabled;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",
+        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private Collection<Role> roles;
 }
